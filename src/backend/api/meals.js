@@ -11,13 +11,13 @@ router.get("/", async (request, response) => {
     const titles = await knex("meals").select("title");
     response.json(titles);
     console.log("in/api/meals");
-    const requestQuery = Object.keys(request.query);
-    const matchQuery = [];
-    requestQuery.some((item) => {
-      if (query.includes(item)) {
-        matchQuery.push(item);
-      }
-    });
+    // const requestQuery = Object.keys(request.query);
+    // const matchQuery = [];
+    // requestQuery.some((item) => {
+    //   if (query.includes(item)) {
+    //     matchQuery.push(item);
+    //   }
+    // });
     const getMeals = await knex("meals");
     const { maxPrice, title, createdAfter, limit, availableReservations } =
       request.query;
