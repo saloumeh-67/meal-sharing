@@ -2,26 +2,27 @@ import React from "react";
 import "./App.css";
 import Nav from "./Nav";
 import About from "./frontend/component/About";
-import React, { useEffect, useState, createContext } from "react";
+import Home from "./frontend/component/Home";
+import Meals from "./Meals";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
+      <Nav />
       <div className="App">
-        <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/About" component={About} />
+
+          <Route path="/about" exact>
+            <About />
+          </Route>
+
+          <Route path="/meals" exact component={Meals} />
         </Switch>
       </div>
     </Router>
   );
-}
-const Home = ()=>{
-  <div>
-    <h1>HomePage</h1>
-  </div>
 }
 
 export default App;

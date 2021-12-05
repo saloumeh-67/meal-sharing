@@ -10,16 +10,16 @@ function Nav() {
     <nav>
       <h3>logo</h3>
       <ul className="nav-links">
-        <Link style={navStyle} to="/About">
+        <Link style={navStyle} to="/about">
           <li>About</li>
         </Link>
-        <Link style={navStyle} to="/Foods">
-          <li>Foods</li>
+        <Link style={navStyle} to="/meals">
+          <li>Meals</li>
         </Link>
-        <Link style={navStyle} to="/Become A Host">
+        <Link style={navStyle} to="/become a host">
           <li>Become A Host</li>
         </Link>
-        <Link style={navStyle} to="/Sign Up">
+        <Link style={navStyle} to="/sign up">
           <li>Sign Up</li>
         </Link>
       </ul>
