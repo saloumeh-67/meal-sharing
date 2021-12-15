@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 function Meals() {
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/meals`)
+    fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/meals`)
       .then((res) => {
         if (!res.ok) {
           throw Error("could not fetch the data ");
@@ -23,7 +23,12 @@ function Meals() {
   return (
     <div>
       {meals.map((meals) => (
-        <h1>{meals.title}</h1>
+        <div className="foodContainer">
+          <h1>
+            <Link to={`/meals/${meals.title}`}>{meals.title}</Link>
+          </h1>
+          <img style={{ maxWidth: "60%" }} src={meals.images_urls}></img>
+        </div>
       ))}
     </div>
   );

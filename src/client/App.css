@@ -1,3 +1,4 @@
+*{background-color: rgb(168, 166, 163);}
 .App {
   text-align: center;
 }
@@ -15,4 +16,8 @@ Nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.foodContainer {
+   background-color: rgb(242, 248, 248);
+   font-family:sa;
 }
