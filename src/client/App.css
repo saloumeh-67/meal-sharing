@@ -9,13 +9,16 @@ Nav {
   min-height: 15vh;
   background-color: rgb(75, 74, 72);
   color: white;
+  text-decoration: none;
 }
 .nav-links {
+  text-decoration: none;
   list-style: none;
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(75, 74, 72);
 }
 .foodContainer {
    background-color: rgb(242, 248, 248);

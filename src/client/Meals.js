@@ -5,6 +5,7 @@ function Meals() {
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState("");
 
+
   useEffect(() => {
     fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/meals`)
       .then((res) => {

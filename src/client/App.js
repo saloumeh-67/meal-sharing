@@ -6,6 +6,7 @@ import Home from "./frontend/component/Home";
 import Meals from "./Meals";
 import MealsDetail from "./MealsDetail";
 import MealsContainer from "./MealsContainer";
+import ReservationForm from "./reservations";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -21,6 +22,8 @@ function App() {
           <Route path="/mealsDetail" exact component={MealsDetail} />
           <Route path="/meals:title" component={MealsDetail} />
           <Route path="/mealsContainer" exact component={MealsContainer} />
+          <Route path="/reservations" exact component={ReservationForm} />
+          
         </Switch>
       </div>
     </Router>

@@ -3,7 +3,7 @@ import "./App.css";
 import { Link } from "react-router-dom";
 function Nav() {
   const navStyle = {
-    color: "white",
+    color: "white"
   };
 
   return (
@@ -15,6 +15,9 @@ function Nav() {
         </Link>
         <Link style={navStyle} to="/meals">
           <li>Meals</li>
+        </Link>
+        <Link style={navStyle} to="/reservations">
+          <li>reservations</li>
         </Link>
         <Link style={navStyle} to="/become a host">
           <li>Become A Host</li>
