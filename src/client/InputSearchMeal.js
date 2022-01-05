@@ -60,7 +60,10 @@ const InputSearchMeal = () => {
   return (
     <>
       <div>
-        <input
+        <input className="searchbar" style={{
+          width: '140px',
+          height: '40px',
+        }}
           placeholder="search for meal "
           value={value}
           onChange={onChangeValue}

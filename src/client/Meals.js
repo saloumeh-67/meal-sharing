@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./styles/Meals.css";
 function Meals() {
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState("");
-
 
   useEffect(() => {
     fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/meals`)
@@ -24,11 +24,12 @@ function Meals() {
   return (
     <div>
       {meals.map((meals) => (
-        <div className="foodContainer">
-          <h1>
-            <Link to={`/meals/${meals.title}`}>{meals.title}</Link>
-          </h1>
-          <img style={{ maxWidth: "60%" }} src={meals.images_urls}></img>
+        //<div className="foodContainer">
+        <div className="meals">
+          <Link className="mealsTitle" to={`/meals/${meals.title}`}>
+            {meals.title}
+          </Link>
+          <img className="mealsImage" src={meals.images_urls}></img>
         </div>
       ))}
     </div>

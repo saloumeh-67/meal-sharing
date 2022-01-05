@@ -1,30 +1,36 @@
 import React from "react";
 import "./App.css";
-import Nav from "./Nav";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 import About from "./frontend/component/About";
 import Home from "./frontend/component/Home";
+import Reservations from "./Reservations";
 import Meals from "./Meals";
+import Contact from "./Contact";
 import MealsDetail from "./MealsDetail";
-import MealsContainer from "./MealsContainer";
-import ReservationForm from "./reservations";
-
+import InputSearchMeal from "./InputSearchMeal";
+import SubmitReservations from "./SubmitReservations";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+
 
 function App() {
   return (
     <Router>
-      <Nav />
+      <Navbar />
       <div className="App">
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
           <Route path="/meals" exact component={Meals} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/reservations" exact component={Reservations} />
+          <Route path="/inputSearchMeal" exact component={InputSearchMeal} />
           <Route path="/mealsDetail" exact component={MealsDetail} />
           <Route path="/meals:title" component={MealsDetail} />
-          <Route path="/mealsContainer" exact component={MealsContainer} />
-          <Route path="/reservations" exact component={ReservationForm} />
-          
+          <Route path="/submitReservations" exact component={SubmitReservations} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

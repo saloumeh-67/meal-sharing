@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MealsContainer from "./MealsContainer";
+
 
 function MealsDetail({ match }) {
   const [showDetails, setShowDetails] = useState({});
