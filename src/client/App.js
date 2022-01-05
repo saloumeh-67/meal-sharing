@@ -28,7 +28,7 @@ function App() {
           <Route path="/inputSearchMeal" exact component={InputSearchMeal} />
           <Route path="/mealsDetail" exact component={MealsDetail} />
           <Route path="/meals:title" component={MealsDetail} />
-          <Route path="/submitReservations" exact component={SubmitReservations} />
+          <Route path="/submitReservations" component={SubmitReservations} />
         </Switch>
         <Footer />
       </div>
