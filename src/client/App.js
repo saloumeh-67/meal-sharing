@@ -9,7 +9,7 @@ import Meals from "./Meals";
 import Contact from "./Contact";
 import MealsDetail from "./MealsDetail";
 import InputSearchMeal from "./InputSearchMeal";
-import SubmitReservations from "./SubmitReservations";
+import AddNewMeals from "./AddNewMeals";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
@@ -28,7 +28,7 @@ function App() {
           <Route path="/inputSearchMeal" exact component={InputSearchMeal} />
           <Route path="/mealsDetail" exact component={MealsDetail} />
           <Route path="/meals:title" component={MealsDetail} />
-          <Route path="/submitReservations" component={SubmitReservations} />
+          <Route path="/addNewMeals" exact component={AddNewMeals} />
         </Switch>
         <Footer />
       </div>

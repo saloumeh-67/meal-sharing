@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; 
 
 const InputSearchMeal = () => {
   const [value, setValue] = useState("");
@@ -11,61 +10,36 @@ const InputSearchMeal = () => {
   const [created_date, setCreated_date] = useState();
   const [number_of_guests, setNumber_of_guests] = useState();
   const [contact_phoneNumber, setContact_phoneNumber] = useState();
-  const [reserved, setReserved] = useState(true);
   const [mealId, setMealId] = useState();
   const [toggle, setToggle] = useState(true);
-  const available = true;
-  const [newReservation, setNewReservation] = useState({
-    contact_name: "",
-    contact_email: "",
-    contact_phoneNumber: "",
-    created_date: "",
-    number_of_guests: "",
-    meal_id: mealId,
-  });
-    const handleSubmit= async (e) => {
-    setNewReservation({...newReservation})
-   }
-    const postData = () => {
-      fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/reservations`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newReservation),
+  const [inputState, setInputState] = useState(false);
+  
+
+  function newReservation() {
+    setInputState(true);
+    fetch("/api/reservations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contact_name: contact_name,
+        contact_phoneNumber: contact_phoneNumber,
+        contact_email: contact_email,
+        meal_id: mealId,
+        number_of_guests: number_of_guests,
+        created_date: created_date,
+      }),
+    })
+      .catch((e) => {
+        setError(e);
+        alert("please enter the Valid details");
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    };
-  // console.log(mealId);
-  // const newReservation = async (e) => {
-  //   try {
-  // check if number of reservations is available or not
-  // if (availableReservations <resNumber)
-  //     const response = await postData(
-  //       `https://hyf-meal-sharing-apps.herokuapp.com/api/reservations`,
-  //       {
-  //         mealId,
-  //         number_of_guests,
-  //         contact_phoneNumber,
-  //         contact_name,
-  //         contact_email,
-  //         created_date,
-  //       }
-  //     );
-  //     setReserved(response.ok);
-  //     return e.preventDefault();
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
+      .finally(() => {
+        setInputState(false);
+        alert("Your Reservation has been saved. Enjoy the Experience.");
+      });
+  }
   useEffect(() => {
-    fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/meals`)
+    fetch(`/api/meals`)
       .then((res) => {
         if (!res.ok) {
           throw Error("could not fetch the data ");
@@ -89,7 +63,6 @@ const InputSearchMeal = () => {
     console.log(filterTitles);
   };
   console.log(titles);
-
   return (
     <>
       <div>
@@ -123,69 +96,46 @@ const InputSearchMeal = () => {
       </div>
       {mealId ? (
         <div className="reservation-form">
-          <form onSubmit={handleSubmit}>
+          <form>
             <input
-              onChange={(e) =>
-                setNewReservation({
-                  ...newReservation,
-                  contact_name: e.target.value,
-                })
-              }
+              onChange={(e) => setContact_name(e.target.value)}
               placeholder="Enter your name"
               type="text"
               minLength="3"
               required
             />
             <input
-              onChange={(e) =>
-                setNewReservation({
-                  ...newReservation,
-                  contact_email: e.target.value,
-                })
-              }
+              onChange={(e) => setContact_email(e.target.value)}
               placeholder="email address"
               type="text"
               minLength="8"
               required
             />
             <input
-              onChange={(e) =>
-                setNewReservation({
-                  ...newReservation,
-                  contact_phoneNumber: e.target.value,
-                })
-              }
+              onChange={(e) => setContact_phoneNumber(e.target.value)}
               placeholder="phone number"
               type="text"
               minLength="8"
               required
             />
             <input
-              onChange={(e) =>
-                setNewReservation({
-                  ...newReservation,
-                  created_date: e.target.value,
-                })
-              }
+              onChange={(e) => setCreated_date(e.target.value)}
               placeholder="date"
               type="date"
               pattern="\d{4}-\d{2}-\d{2}"
               required
             />
             <input
-              onChange={(e) =>
-                setNewReservation({
-                  ...newReservation,
-                  number_of_guests: e.target.value,
-                })
-              }
+              onChange={(e) => setNumber_of_guests(e.target.value)}
               placeholder="number of guests"
               type="text"
               required
             />
-            <Link to="./submitReservations">
-              <button className="BookTable"> Book a Table</button>
-            </Link>
+
+            <button  type="button" onClick={newReservation} className="BookTable">
+              {" "}
+              Book a Table
+            </button>
           </form>
         </div>
       ) : null}
