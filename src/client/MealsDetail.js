@@ -11,7 +11,7 @@ function MealsDetail({ match }) {
 
   const fetchDetails = async () => {
     const fetchDetails = await fetch(
-      `https://hyf-meal-sharing-apps.herokuapp.com/api/meals/${match.params.id}`
+      `/api/meals/${match.params.id}`
     );
     const showDetails = await fetchDetails.json();
     setShowDetails(showDetails);

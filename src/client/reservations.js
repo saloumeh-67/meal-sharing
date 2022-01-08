@@ -1,12 +1,13 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import InputSearchMeal from "./InputSearchMeal";
+
 //import "./styles/Reservations.css";
 
 const ReservationsForm = () => {
   const [error, setError] = useState();
   useEffect(() => {
-    fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/reservations`)
+    fetch(`/api/reservations`)
       .then((res) => {
         if (!res.ok) {
           throw Error("could not fetch the data ");

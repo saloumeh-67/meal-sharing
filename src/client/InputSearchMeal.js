@@ -35,7 +35,7 @@ const InputSearchMeal = () => {
       })
       .finally(() => {
         setInputState(false);
-        alert("Your Reservation has been saved. Enjoy the Experience.");
+        alert("Your Reservation has been saved.");
       });
   }
   useEffect(() => {

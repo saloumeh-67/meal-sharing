@@ -7,7 +7,7 @@ function Meals() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`https://hyf-meal-sharing-apps.herokuapp.com/api/meals`)
+    fetch(`/api/meals`)
       .then((res) => {
         if (!res.ok) {
           throw Error("could not fetch the data ");

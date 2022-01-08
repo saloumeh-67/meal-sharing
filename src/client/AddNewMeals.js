@@ -1,31 +1,37 @@
-import React,{ useState } from "react";
+import React from "react";
+import { useState } from "react";
 
 export const AddNewMeals = () => {
   const [newMeal, setNewMeal] = useState({});
   function handleChange(e) {
-    console.log(newMeal);
+    setNewMeal(true);
     setNewMeal({ ...newMeal, [e.target.name]: e.target.value });
-  }
-  const postData = () => {
-    fetch("/api/meals/", {
+    fetch("/api/meals", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newMeal),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: "",
+        description: "",
+        location: "",
+        when: "",
+        max_reservations: "",
+        price: "",
+        created_date: "",
+        images_url: "",
+      }),
     })
       .catch((e) => {
         setError(e);
         alert("please enter the Valid details");
       })
       .finally(() => {
-        setInputState(false);
-        alert("Your meal is added.");
-      });
-  };
+        setNewMeal(false);
+        alert("Your meal has been saved.");
+      })
+    };
   return (
     <>
-      <h4>Share your meal with the others</h4>
+      <h4>  Share your meal with the others  </h4>
       <div className="addMeal-form">
         <form>
           <input
@@ -105,7 +111,7 @@ export const AddNewMeals = () => {
             type="file"
             name="Food Image"
           />
-          <button onClick={AddNewMeals} className="add food">
+          <button type= "button" onClick={AddNewMeals} className="add food">
             Add to List{" "}
           </button>
         </form>
