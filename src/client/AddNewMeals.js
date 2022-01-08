@@ -10,14 +10,13 @@ export const AddNewMeals = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        title: "",
-        description: "",
-        location: "",
-        when: "",
-        max_reservations: "",
-        price: "",
-        created_date: "",
-        images_url: "",
+        title: newMeal.title,
+        description: newMeal.description,
+        location: newMeal.location,
+        when: newMeal.when,
+        max_reservations: newMeal.max_reservations,
+        price: newMeal.price,
+        images_urls: newMeal.images_urls,
       }),
     })
       .catch((e) => {
@@ -27,11 +26,13 @@ export const AddNewMeals = () => {
       .finally(() => {
         setNewMeal(false);
         alert("Your meal has been saved.");
-      })
+      });
+    
     };
+    console.log(newMeal);
   return (
     <>
-      <h4>  Share your meal with the others  </h4>
+      <h4> Share your meal with the others </h4>
       <div className="addMeal-form">
         <form>
           <input
@@ -104,14 +105,14 @@ export const AddNewMeals = () => {
             onChange={(e) =>
               setNewMeal({
                 ...newMeal,
-                images_url: e.target.value,
+                images_urls: e.target.value,
               })
             }
-            placeholder="upload your image"
-            type="file"
-            name="Food Image"
+            placeholder=" type url image"
+            type="text"
+            
           />
-          <button type= "button" onClick={AddNewMeals} className="add food">
+          <button type="button" onClick={handleChange} className="add food">
             Add to List{" "}
           </button>
         </form>

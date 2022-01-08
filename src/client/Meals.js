@@ -1,3 +1,4 @@
+import { Description } from "@mui/icons-material";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -27,7 +28,7 @@ function Meals() {
         //<div className="foodContainer">
         <div className="meals">
           <Link className="mealsTitle" to={`/meals/${meals.title}`}>
-            {meals.title}
+            {meals.title}<br/>{meals.price}
           </Link>
           <img className="mealsImage" src={meals.images_urls}></img>
         </div>
