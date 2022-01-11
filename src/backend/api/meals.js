@@ -8,21 +8,26 @@ const knex = require("../database");
 router.get("/", async (request, response) => {
   try {
     // knex syntax for selecting things.
-    const titles = await knex("meals").select("title");
+    const titles = await knex("meals").select("*");
     response.json(titles);
-    console.log("in/api/meals");
-    // const requestQuery = Object.keys(request.query);
-    // const matchQuery = [];
-    // requestQuery.some((item) => {
-    //   if (query.includes(item)) {
-    //     matchQuery.push(item);
-    //   }
-    // });
+
+    console.log("/api/meals");
+    const requestQuery = Object.keys(request.query);
+    const matchQuery = [];
+    requestQuery.some((item) => {
+      if (query.includes(item)) {
+        matchQuery.push(item);
+      }
+    });
+
     const getMeals = await knex("meals");
     const { maxPrice, title, createdAfter, limit, availableReservations } =
       request.query;
-    getMeals = reserved.filter((meal) => {
-      if (meal.max_number_of_guests > meal.reserved || meal.reserved === null) {
+    getMeals = availableReservations.filter((meal) => {
+      if (
+        meal.max_number_of_guests > meal.availableReservations ||
+        meal.availableReservations === null
+      ) {
         return meal;
       }
     });
@@ -48,11 +53,11 @@ router.get("/", async (request, response) => {
       getMeals = getMeals.slice(0, Number(limit));
     }
     if (getMeals < 1) {
-      return response.status(200).json({ Message: "No meals found" });
+      return response.status(200).json({ Message: "Meals Not Found" });
     } else {
       //	Respond with the json for all the meals
       response.json(getMeals);
-      response.status(400).json({ error: "request not exist" });
+      response.status(400).json({ error: "Request not exist" });
     }
   } catch (error) {
     throw error;
