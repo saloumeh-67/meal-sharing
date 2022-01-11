@@ -10,6 +10,7 @@ router.get("/", async (request, response) => {
     // knex syntax for selecting things.
     const titles = await knex("meals").select("*");
     response.json(titles);
+
     console.log("/api/meals");
     const requestQuery = Object.keys(request.query);
     const matchQuery = [];
@@ -18,6 +19,7 @@ router.get("/", async (request, response) => {
         matchQuery.push(item);
       }
     });
+
     const getMeals = await knex("meals");
     const { maxPrice, title, createdAfter, limit, availableReservations } =
       request.query;
